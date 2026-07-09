@@ -1,0 +1,149 @@
+# cageminer
+
+The goal of `cageminer` is to integrate SNP data from GWAS results with
+gene coexpression networks to identify high-confidence candidate genes
+involved in a particular phenotype. To identify high-confidence
+candidate genes, `cageminer` considers 3 criteria:
+
+1.  Physical proximity (or linkage disequilibrium with) trait-related
+    SNPs;
+2.  Presence in coexpression modules enriched in guide genes (i.e.,
+    “reference” genes that are known to be associated with the
+    phenotype).
+3.  Significant altered expression levels in a condition of interest
+    (e.g., stress, disease, etc).
+
+By default, `cageminer` defines genes as high-confidence candidates if
+they satisfy all of the 3 criteria above, but users can choose to use
+only one/some of them.
+
+## Installation instructions
+
+Get the latest stable `R` release from
+[CRAN](http://cran.r-project.org/). Then install `cageminer` from
+[Bioconductor](http://bioconductor.org/) using the following code:
+
+``` r
+
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
+}
+
+BiocManager::install("cageminer")
+```
+
+And the development version from
+[GitHub](https://github.com/almeidasilvaf/cageminer) with:
+
+``` r
+
+BiocManager::install("almeidasilvaf/cageminer")
+```
+
+## Citation
+
+Below is the citation output from using `citation('cageminer')` in R.
+Please run this yourself to check for any updates on how to cite
+**cageminer**.
+
+``` r
+
+print(citation('cageminer'), bibtex = TRUE)
+#> To cite cageminer in publications use:
+#> 
+#>   Almeida-Silva, F., & Venancio, T. M. (2022). cageminer: an
+#>   R/Bioconductor package to prioritize candidate genes by integrating
+#>   genome-wide association studies and gene coexpression networks. in
+#>   silico Plants, 4(2), diac018.
+#>   https://doi.org/10.1093/insilicoplants/diac018
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Article{,
+#>     title = {cageminer: an R/Bioconductor package to prioritize candidate genes by integrating genome-wide association studies and gene coexpression networks},
+#>     author = {Fabricio Almeida-Silva and Thiago M. Venancio},
+#>     journal = {in silico Plants},
+#>     year = {2022},
+#>     volume = {4},
+#>     number = {2},
+#>     pages = {diac018},
+#>     url = {https://doi.org/10.1093/insilicoplants/diac018},
+#>     doi = {10.1093/insilicoplants/diac018},
+#>   }
+```
+
+## Code of Conduct
+
+Please note that the `cageminer` project is released with a [Contributor
+Code of Conduct](http://bioconductor.org/about/code-of-conduct/). By
+contributing to this project, you agree to abide by its terms.
+
+## Development tools
+
+- Continuous code testing is possible thanks to [GitHub
+  actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)
+  through *[usethis](https://CRAN.R-project.org/package=usethis)*,
+  *[remotes](https://CRAN.R-project.org/package=remotes)*, and
+  *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)* customized
+  to use [Bioconductor’s docker
+  containers](https://www.bioconductor.org/help/docker/) and
+  *[BiocCheck](https://bioconductor.org/packages/3.24/BiocCheck)*.
+- Code coverage assessment is possible thanks to
+  [codecov](https://codecov.io/gh) and
+  *[covr](https://CRAN.R-project.org/package=covr)*.
+- The [documentation website](http://almeidasilvaf.github.io/cageminer)
+  is automatically updated thanks to
+  *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
+- The code is styled automatically thanks to
+  *[styler](https://CRAN.R-project.org/package=styler)*.
+- The documentation is formatted thanks to
+  *[devtools](https://CRAN.R-project.org/package=devtools)* and
+  *[roxygen2](https://CRAN.R-project.org/package=roxygen2)*.
+
+For more details, check the `dev` directory.
+
+This package was developed using
+*[biocthis](https://bioconductor.org/packages/3.24/biocthis)*.
+
+# Package index
+
+## All functions
+
+- [`chr_length`](chr_length.md) : Pepper chromosome lengths
+- [`gcn`](gcn.md) : Simulation of the output list from
+  BioNERO::exp2gcn() with pepper data
+- [`gene_ranges`](gene_ranges.md) : Genomic coordinates of pepper genes
+- [`guides`](guides.md) : Guide genes associated with defense and
+  resistance to oomycetes
+- [`hubs`](hubs.md) : Example hub genes for the network stored in the
+  gcn object
+- [`mine2`](mine2.md) : Example output from mine_step2()
+- [`mine_candidates()`](mine_candidates.md) : Mine high-confidence
+  candidate genes in a single step
+- [`mine_step1()`](mine_step1.md) : Step 1: Get all putative candidate
+  genes for a given sliding window
+- [`mine_step2()`](mine_step2.md) : Step 2: Get candidates in modules
+  enriched in guide genes
+- [`mine_step3()`](mine_step3.md) : Step 3: Select candidates based on
+  gene significance
+- [`mined_candidates`](mined_candidates.md) : Example output from
+  mined_candidates()
+- [`pepper_se`](pepper_se.md) : Gene expression data from Kim et al.,
+  2018.
+- [`plot_snp_circos()`](plot_snp_circos.md) : Circos plot of SNP
+  distribution across chromosomes
+- [`plot_snp_distribution()`](plot_snp_distribution.md) : Plot a barplot
+  of SNP distribution across chromosomes
+- [`score_genes()`](score_genes.md) : Score candidate genes and select
+  the top n genes
+- [`simulate_windows()`](simulate_windows.md) : Simulate number of genes
+  for each sliding window
+- [`snp_pos`](snp_pos.md) : Capsicum annuum SNPs associated with
+  resistance to Phytophthora root rot.
+- [`tfs`](tfs.md) : Pepper transcription factors
+
+# Articles
+
+### All vignettes
+
+- [Mining high-confidence candidate genes with cageminer](cageminer.md):
